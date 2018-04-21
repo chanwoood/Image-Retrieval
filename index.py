@@ -8,6 +8,7 @@ import mainwin
 import sim4, unsim3
 
 files, sims, compare_hash = [], [], 0
+os.chdir('pics')
 
 class MainWindow():
     def __init__(self):
@@ -33,7 +34,7 @@ class MainWindow():
     def open(self):
         global files, compare_hash, sims
         files, sims = [], []
-        file, type = QFileDialog.getOpenFileName(QWidget(), '打开文件','./',("Images (*.png *.jpg *.bmp);;All File(*)"))
+        file, type = QFileDialog.getOpenFileName(QWidget(), '打开文件','./pics',("Images (*.png *.jpg *.bmp);;All File(*)"))
         compare_hash = imagehash.phash(Image.open(file), hash_size=8)
         pixmap = QtGui.QPixmap(file)
         self.ui.label.setPixmap(pixmap)
